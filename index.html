@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gombalan Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      width: 100%;
+      max-width: 450px;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff5c5c;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    button.generate-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #ff5c5c;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button.generate-btn:hover {
+      background-color: #e14a4a;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 17px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      input[type="text"],
+      button.generate-btn {
+        font-size: 15px;
+        padding: 12px;
+      }
+
+      .result {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Gombalan Spesial!</h2>
+    <input type="text" id="nameInput" placeholder="Masukkan nama kamu..." />
+    <button class="generate-btn" onclick="generateGombal()">Generate</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const gombalanList = [
+      // (isi 100 gombalan, sama seperti di versi sebelumnya)
+      "Kamu itu kayak alarm, bikin aku bangun terus mikirin kamu.",
+      "Kalau aku jadi hujan, aku mau jatuh terus ke hatimu.",
+      "Kamu mirip matematika deh, makin dihitung makin bikin pusing tapi aku suka.",
+      "Kamu itu kayak wifi, koneksi kamu bikin hidupku lancar.",
+      // ... (tambahkan 96 gombalan lainnya dari versi sebelumnya)
+    ];
+
+    const adRedirectUrl = "https://your.adsterra.directlink.here"; // Ganti dengan directlink iklan kamu
+    let clickCount = 0;
+
+    function generateGombal() {
+      clickCount++;
+      if (clickCount > 3) {
+        window.location.href = adRedirectUrl;
+        return;
+      }
+
+      const name = document.getElementById("nameInput").value.trim();
+      const result = document.getElementById("result");
+
+      if (name === "") {
+        result.innerText = "Masukkan dulu dong namanya 😁";
+        return;
+      }
+
+      const randomGombal = gombalanList[Math.floor(Math.random() * gombalanList.length)];
+      result.innerText = `${name}, ${randomGombal}`;
+    }
+  </script>
+</body>
+</html>
